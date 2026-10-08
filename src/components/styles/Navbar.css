@@ -1,16 +1,19 @@
 .header {
   display: flex;
   max-width: var(--cMaxWidth);
-  width: var(--cWidth);
+  width: 100%;
   justify-content: space-between;
-  padding: 20px 0px;
-  margin-bottom: -100px;
+  padding: 14px 20px;
   box-sizing: border-box;
   position: fixed;
   left: 50%;
   transform: translateX(-50%);
   top: 0;
   z-index: 9999;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  background: rgba(9, 7, 13, 0.75);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 .header ul {
   font-size: 12px;
@@ -124,6 +127,13 @@
   }
 }
 @media only screen and (min-width: 900px) {
+  .header {
+    width: var(--cWidth);
+    background: transparent;
+    border-bottom: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
   .navbar-connect {
     display: block;
   }

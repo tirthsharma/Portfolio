@@ -137,6 +137,8 @@ export default function setSplitText() {
   const paras: NodeListOf<ParaElement> = document.querySelectorAll(".para");
   const titles: NodeListOf<ParaElement> = document.querySelectorAll(".title");
 
+  const isMobile = typeof window !== "undefined" && window.innerWidth <= 768;
+
   paras.forEach((para: ParaElement) => {
     para.classList.add("visible");
     if (para.anim) {
@@ -149,30 +151,33 @@ export default function setSplitText() {
       wordsClass: "split-word",
     });
 
-    // Baseline: "text behind text" is visible at dimmed opacity
+    // Baseline: words are clear and legible on all screens, never dark/broken
+    const baseColor = isMobile ? "rgba(255, 255, 255, 0.6)" : "rgba(255, 255, 255, 0.38)";
+    const baseOpacity = isMobile ? 0.65 : 0.4;
+
     gsap.set(para.split.words, {
-      color: "rgba(255, 255, 255, 0.22)",
-      opacity: 0.22,
+      color: baseColor,
+      opacity: baseOpacity,
     });
 
-    // Scroll-driven highlighting: words progressively illuminate to white
+    // Scroll-driven highlighting: words progressively illuminate to bright white
     para.anim = gsap.to(para.split.words, {
       color: "#ffffff",
       opacity: 1,
-      stagger: 0.1,
+      stagger: 0.08,
       ease: "power1.inOut",
       scrollTrigger: {
-        trigger: ".about-section",
-        start: "top 70%",
-        end: "center 40%",
-        scrub: 0.6,
+        trigger: para,
+        start: isMobile ? "top 88%" : "top 78%",
+        end: isMobile ? "bottom 60%" : "bottom 45%",
+        scrub: 0.5,
       },
     });
   });
 
   titles.forEach((title: ParaElement) => {
     if (title.anim) {
-      title.anim.progress(1).kill();
+      title.anim.kill();
       title.split?.revert();
     }
     title.split = new SplitText(title, {
@@ -181,19 +186,20 @@ export default function setSplitText() {
     });
     title.anim = gsap.fromTo(
       title.split.chars,
-      { autoAlpha: 0, y: 80, rotate: 10 },
+      { autoAlpha: 0, y: 35, rotate: 5 },
       {
         autoAlpha: 1,
-        scrollTrigger: {
-          trigger: title,
-          toggleActions: "play pause resume reverse",
-          start: "top 85%",
-        },
-        duration: 0.8,
-        ease: "power2.inOut",
         y: 0,
         rotate: 0,
-        stagger: 0.03,
+        stagger: 0.02,
+        duration: 0.6,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: title,
+          start: "top 92%",
+          toggleActions: "play none none none",
+          once: true,
+        },
       }
     );
   });

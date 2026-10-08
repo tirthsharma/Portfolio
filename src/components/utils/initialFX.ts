@@ -1,11 +1,17 @@
 import { SplitText } from "./splitText";
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { smoother } from "../Navbar";
 
 export function initialFX() {
   document.body.style.overflowY = "auto";
+  document.documentElement.style.overflowY = "auto";
   smoother.paused(false);
   document.getElementsByTagName("main")[0].classList.add("main-active");
+  ScrollTrigger.refresh();
+  setTimeout(() => {
+    ScrollTrigger.refresh();
+  }, 400);
   gsap.to("body", {
     backgroundColor: "#0b080c",
     duration: 0.5,
