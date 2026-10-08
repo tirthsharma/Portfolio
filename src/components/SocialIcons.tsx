@@ -1,6 +1,6 @@
 import {
-  FaGithub,
   FaInstagram,
+  FaWhatsapp,
   FaLinkedinIn,
   FaXTwitter,
 } from "react-icons/fa6";
@@ -23,6 +23,9 @@ const SocialIcons = () => {
       let currentX = 0;
       let currentY = 0;
 
+      let isRunning = false;
+      let rafId: number;
+
       const updatePosition = () => {
         currentX += (mouseX - currentX) * 0.1;
         currentY += (mouseY - currentY) * 0.1;
@@ -30,7 +33,14 @@ const SocialIcons = () => {
         link.style.setProperty("--siLeft", `${currentX}px`);
         link.style.setProperty("--siTop", `${currentY}px`);
 
-        requestAnimationFrame(updatePosition);
+        if (
+          Math.abs(mouseX - currentX) > 0.05 ||
+          Math.abs(mouseY - currentY) > 0.05
+        ) {
+          rafId = requestAnimationFrame(updatePosition);
+        } else {
+          isRunning = false;
+        }
       };
 
       const onMouseMove = (e: MouseEvent) => {
@@ -44,14 +54,18 @@ const SocialIcons = () => {
           mouseX = rect.width / 2;
           mouseY = rect.height / 2;
         }
+
+        if (!isRunning) {
+          isRunning = true;
+          rafId = requestAnimationFrame(updatePosition);
+        }
       };
 
       document.addEventListener("mousemove", onMouseMove);
 
-      updatePosition();
-
       return () => {
-        elem.removeEventListener("mousemove", onMouseMove);
+        cancelAnimationFrame(rafId);
+        document.removeEventListener("mousemove", onMouseMove);
       };
     });
   }, []);
@@ -60,27 +74,52 @@ const SocialIcons = () => {
     <div className="icons-section">
       <div className="social-icons" data-cursor="icons" id="social">
         <span>
-          <a href="https://github.com" target="_blank">
-            <FaGithub />
+          <a
+            href="https://www.instagram.com/imtirthh"
+            target="_blank"
+            rel="noopener noreferrer"
+            title="Instagram"
+          >
+            <FaInstagram />
           </a>
         </span>
         <span>
-          <a href="https://www.linkedin.com" target="_blank">
+          <a
+            href="https://wa.me/919351300612"
+            target="_blank"
+            rel="noopener noreferrer"
+            title="WhatsApp"
+          >
+            <FaWhatsapp />
+          </a>
+        </span>
+        <span>
+          <a
+            href="https://www.linkedin.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            title="LinkedIn"
+          >
             <FaLinkedinIn />
           </a>
         </span>
         <span>
-          <a href="https://x.com" target="_blank">
+          <a
+            href="https://x.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            title="X (Twitter)"
+          >
             <FaXTwitter />
           </a>
         </span>
-        <span>
-          <a href="https://www.instagram.com" target="_blank">
-            <FaInstagram />
-          </a>
-        </span>
       </div>
-      <a className="resume-button" href="#">
+      <a
+        className="resume-button"
+        href="/Tirthraj_Sharma_Resume.pdf"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         <HoverLinks text="RESUME" />
         <span>
           <TbNotes />

@@ -29,57 +29,86 @@
   font-family: "Geist", sans-serif;
   font-weight: 300;
 }
+.career-container {
+  width: 100%;
+}
 .career-info {
   position: relative;
   display: flex;
   flex-direction: column;
   margin: 0px auto;
+  width: 100%;
 }
 .career-info-box {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 50px;
+  align-items: flex-start;
+  margin-bottom: 60px;
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+}
+.career-info-box:last-child {
+  margin-bottom: 0;
 }
 .career-info-box p {
-  width: 40%;
-  font-size: 18px;
+  width: calc(50% - 60px);
+  margin-left: auto;
+  font-size: 16px;
   font-weight: 300;
-  margin: 0;
+  line-height: 1.6;
+  margin-top: 0;
+  color: #cfcfe1;
+  box-sizing: border-box;
 }
 .career-info-in {
+  display: grid;
+  grid-template-columns: 1fr 165px;
+  align-items: center;
+  gap: 20px;
+  width: calc(50% - 60px);
+  box-sizing: border-box;
+}
+.career-role {
   display: flex;
-  width: 40%;
-  justify-content: space-between;
-  gap: 50px;
+  flex-direction: column;
+  min-width: 0;
 }
 .career-info h3 {
-  font-size: 48px;
+  font-size: 20px;
   margin: 0;
   font-weight: 500;
-  line-height: 45px;
+  line-height: 1.25;
+  white-space: nowrap;
+  text-align: center;
+  justify-self: center;
+  align-self: center;
+  letter-spacing: 0.5px;
+  color: #ffffff;
 }
 
 .career-info h4 {
-  font-size: 33px;
-  line-height: 30px;
-  letter-spacing: 0.8px;
+  font-size: 26px;
+  line-height: 1.25;
+  letter-spacing: 0.5px;
   font-weight: 500;
   margin: 0;
+  word-break: break-word;
 }
 .career-info h5 {
   font-weight: 400;
   letter-spacing: 0.7px;
-  font-size: 20px;
+  font-size: 17px;
   text-transform: capitalize;
-  margin: 10px 0px;
+  margin: 6px 0 0 0;
   color: var(--accentColor);
 }
 .career-timeline {
   position: absolute;
-  top: -50px;
+  top: -30px;
   left: 50%;
   transform: translateX(-50%);
-  width: 3px;
+  width: 2px;
   height: 100%;
   background-image: linear-gradient(
     to top,
@@ -135,27 +164,26 @@
     font-size: 50px;
     line-height: 50px;
   }
+  .career-info-in {
+    width: calc(50% - 45px);
+    grid-template-columns: 1fr 145px;
+    gap: 16px;
+  }
   .career-info h4 {
     font-size: 22px;
-    line-height: 24px;
-    width: 180px;
+    line-height: 1.25;
   }
   .career-info h5 {
-    font-size: 17px;
+    font-size: 15px;
   }
   .career-info h3 {
-    font-size: 40px;
+    font-size: 18px;
+    line-height: 1.25;
   }
   .career-info-box p {
-    font-size: 14px;
-  }
-  .career-info-in {
-    width: 45%;
-    gap: 20px;
-  }
-
-  .career-info-box p {
-    width: 45%;
+    width: calc(50% - 45px);
+    font-size: 15px;
+    line-height: 1.5;
   }
 }
 @media only screen and (max-width: 1025px) {
@@ -169,17 +197,23 @@
 @media only screen and (max-width: 900px) {
   .career-info-box {
     flex-direction: column;
-    gap: 10px;
-    margin-bottom: 70px;
+    gap: 14px;
+    margin-bottom: 55px;
+    padding-left: 36px;
   }
-  .career-info-in,
+  .career-info-in {
+    width: 100%;
+    grid-template-columns: 1fr auto;
+    gap: 16px;
+    align-items: center;
+  }
   .career-info-box p {
     width: 100%;
-    padding-left: 10%;
-    box-sizing: border-box;
+    font-size: 15px;
+    line-height: 1.5;
   }
   .career-timeline {
-    left: 0%;
+    left: 12px;
   }
   .career-container {
     width: calc(100% - 25px);
@@ -191,24 +225,29 @@
   }
   .career-section h2 {
     width: 100%;
-    font-size: 45px;
-    line-height: 45px;
+    font-size: 42px;
+    line-height: 44px;
     margin-top: 0px;
   }
+  .career-info-box {
+    padding-left: 28px;
+    gap: 10px;
+    margin-bottom: 45px;
+  }
   .career-info-in {
-    gap: 0px;
+    grid-template-columns: 1fr;
+    gap: 6px;
   }
   .career-info h3 {
-    font-size: 33px;
+    text-align: left;
+    font-size: 18px;
   }
-  .career-info-in,
-  .career-info-box p {
-    padding-left: 5%;
+  .career-info h4 {
+    font-size: 19px;
   }
   .career-section {
     padding-top: 90px;
     margin-top: -70px;
-
     align-items: start;
     place-items: inherit;
     justify-content: left;

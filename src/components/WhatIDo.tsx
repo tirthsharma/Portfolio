@@ -37,7 +37,7 @@ const WhatIDo = () => {
       <div className="what-box">
         <div className="what-box-in">
           <div className="what-border2">
-            <svg width="100%">
+            <svg width="100%" height="100%">
               <line
                 x1="0"
                 y1="0"
@@ -87,24 +87,25 @@ const WhatIDo = () => {
             <div className="what-corner"></div>
 
             <div className="what-content-in">
-              <h3>DEVELOP</h3>
+              <h3>EVOLVE</h3>
               <h4>Description</h4>
               <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas
-                quia aliquid laboriosam ducimus sit molestiae.
+                From teaching computers to editing videos and eventually
+                training thousands of editors, my journey has evolved across
+                technology, media, people, and business.
               </p>
               <h5>Skillset & tools</h5>
               <div className="what-content-flex">
-                <div className="what-tags">JavaScript</div>
-                <div className="what-tags">TypeScript</div>
-                <div className="what-tags">Three.js</div>
-                <div className="what-tags">React</div>
-                <div className="what-tags">Css</div>
-                <div className="what-tags">Node.js</div>
-                <div className="what-tags">Next.js</div>
-                <div className="what-tags">Express.js</div>
-                <div className="what-tags">PHP</div>
-                <div className="what-tags">MySql</div>
+                <div className="what-tags">Color Grading</div>
+                <div className="what-tags">Animations</div>
+                <div className="what-tags">Sound Design</div>
+                <div className="what-tags">Pacing</div>
+                <div className="what-tags">Storytelling</div>
+                <div className="what-tags">Visual FX</div>
+                <div className="what-tags">Video Editing</div>
+                <div className="what-tags">Transitions</div>
+                <div className="what-tags">Premiere Pro</div>
+                <div className="what-tags">Audio Mixing</div>
               </div>
               <div className="what-arrow"></div>
             </div>
@@ -128,22 +129,25 @@ const WhatIDo = () => {
             </div>
             <div className="what-corner"></div>
             <div className="what-content-in">
-              <h3>DESIGN</h3>
+              <h3>ADAPT</h3>
               <h4>Description</h4>
               <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas
-                quia aliquid laboriosam ducimus sit molestiae
+                Along the way, I’ve worked across video editing, social media,
+                sales, people management, content, and public speaking, learning
+                to adapt to different roles and challenges.
               </p>
               <h5>Skillset & tools</h5>
               <div className="what-content-flex">
+                <div className="what-tags">3D Design</div>
+                <div className="what-tags">SaaS Motion Design</div>
                 <div className="what-tags">Blender</div>
-                <div className="what-tags">Zbrush</div>
-                <div className="what-tags">UI Design</div>
-                <div className="what-tags">Motion</div>
-                <div className="what-tags">Rigging</div>
+                <div className="what-tags">Figma</div>
+                <div className="what-tags">AI Motion</div>
+                <div className="what-tags">Higgsfield AI</div>
+                <div className="what-tags">Runway</div>
                 <div className="what-tags">3D Animation</div>
-                <div className="what-tags">Character Design</div>
-                <div className="what-tags">Modelling</div>
+                <div className="what-tags">Social Media</div>
+                <div className="what-tags">Public Speaking</div>
               </div>
               <div className="what-arrow"></div>
             </div>

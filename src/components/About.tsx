@@ -3,12 +3,14 @@ import "./styles/About.css";
 const About = () => {
   return (
     <div className="about-section" id="about">
+      <div className="about-watermark">ABOUT ME</div>
       <div className="about-me">
         <h3 className="title">About Me</h3>
         <p className="para">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic quis
-          dolores numquam iusto Ratione earum ducimus autem id iure pariatur
-          dolorum quae maiores.
+          I am a Video Editor and Motion Designer driven by storytelling,
+          pacing, and visual impact. From cutting high-retention edits to
+          designing 3D motion and AI-powered visuals, I bring concepts to
+          life across technology, media, and design.
         </p>
       </div>
     </div>

@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import HoverLinks from "./HoverLinks";
 import { gsap } from "gsap";
@@ -9,12 +9,20 @@ gsap.registerPlugin(ScrollSmoother, ScrollTrigger);
 export let smoother: ScrollSmoother;
 
 const Navbar = () => {
+  const [copied, setCopied] = useState(false);
+
+  const copyEmail = () => {
+    navigator.clipboard.writeText("tirthsharmabusiness@gmail.com");
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2200);
+  };
+
   useEffect(() => {
     smoother = ScrollSmoother.create({
       wrapper: "#smooth-wrapper",
       content: "#smooth-content",
-      smooth: 1.7,
-      speed: 1.7,
+      smooth: 0.8,
+      speed: 1,
       effects: true,
       autoResize: true,
       ignoreMobileResize: true,
@@ -43,15 +51,19 @@ const Navbar = () => {
     <>
       <div className="header">
         <a href="/#" className="navbar-title" data-cursor="disable">
-          Logo
+          <span className="navbar-brand-badge">T</span>
+          <span className="navbar-brand-name">
+            ImTirt<span className="brand-h1">h</span><span className="brand-h2">h</span>
+          </span>
         </a>
-        <a
-          href="mailto:example@mail.com"
+        <button
+          onClick={copyEmail}
           className="navbar-connect"
           data-cursor="disable"
+          title="Click to copy email"
         >
-          example@mail.com
-        </a>
+          {copied ? "✓ Copied to clipboard!" : "tirthsharmabusiness@gmail.com"}
+        </button>
         <ul>
           <li>
             <a data-href="#about" href="#about">
