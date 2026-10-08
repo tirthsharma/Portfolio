@@ -2,11 +2,33 @@ import { useEffect, useState } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import HoverLinks from "./HoverLinks";
 import { gsap } from "gsap";
-import { ScrollSmoother } from "gsap-trial/ScrollSmoother";
 import "./styles/Navbar.css";
 
-gsap.registerPlugin(ScrollSmoother, ScrollTrigger);
-export let smoother: ScrollSmoother;
+gsap.registerPlugin(ScrollTrigger);
+
+export interface CustomSmoother {
+  paused: (state?: boolean) => boolean | void;
+  scrollTo: (target: string | Element | null, smooth?: boolean, position?: string) => void;
+  scrollTop: (val?: number) => number | void;
+}
+
+export const smoother: CustomSmoother = {
+  paused: () => {},
+  scrollTo: (target) => {
+    if (typeof target === "string") {
+      const el = document.querySelector(target);
+      el?.scrollIntoView({ behavior: "smooth" });
+    } else if (target instanceof Element) {
+      target.scrollIntoView({ behavior: "smooth" });
+    }
+  },
+  scrollTop: (val) => {
+    if (typeof val === "number") {
+      window.scrollTo({ top: val, behavior: "instant" as ScrollBehavior });
+    }
+    return window.scrollY;
+  },
+};
 
 const Navbar = () => {
   const [copied, setCopied] = useState(false);
@@ -18,34 +40,25 @@ const Navbar = () => {
   };
 
   useEffect(() => {
-    smoother = ScrollSmoother.create({
-      wrapper: "#smooth-wrapper",
-      content: "#smooth-content",
-      smooth: 0.8,
-      speed: 1,
-      effects: true,
-      autoResize: true,
-      ignoreMobileResize: true,
-    });
-
-    smoother.scrollTop(0);
-    smoother.paused(true);
-
     let links = document.querySelectorAll(".header ul a");
     links.forEach((elem) => {
       let element = elem as HTMLAnchorElement;
       element.addEventListener("click", (e) => {
-        if (window.innerWidth > 1024) {
-          e.preventDefault();
-          let elem = e.currentTarget as HTMLAnchorElement;
-          let section = elem.getAttribute("data-href");
-          smoother.scrollTo(section, true, "top top");
+        e.preventDefault();
+        let elem = e.currentTarget as HTMLAnchorElement;
+        let section = elem.getAttribute("data-href");
+        if (section) {
+          smoother.scrollTo(section);
         }
       });
     });
-    window.addEventListener("resize", () => {
-      ScrollSmoother.refresh(true);
-    });
+    const handleResize = () => {
+      ScrollTrigger.refresh();
+    };
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
   }, []);
   return (
     <>
