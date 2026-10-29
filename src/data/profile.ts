@@ -3,7 +3,7 @@ import type { Profile } from '../types';
 export const WHATSAPP_URL = 'https://wa.me/919351300612';
 
 export const profileData: Profile = {
-  name: 'Tirthraj Sharma',
+  name: 'Tirth Sharma',
   role: 'Motion Designer & 3D Creator',
   tagline: 'I SEE ANIMATIONS WHEN I CLOSE MY EYES.',
   taglines: [
