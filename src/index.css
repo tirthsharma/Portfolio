@@ -1,131 +1,185 @@
-@import url("https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap");
+@import "tailwindcss";
 
-:root {
-  font-family: "Geist", sans-serif;
+@layer base {
+  *, ::before, ::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
 
-  font-optical-sizing: auto;
-  font-style: normal;
-  line-height: 1.5;
-  scroll-behavior: smooth;
-  color-scheme: light dark;
-  color: #eae5ec;
-  background-color: var(--backgroundColor);
+  html, body, #root {
+    background-color: #0C0C0C;
+    color: #D7E2EA;
+    font-family: 'Kanit', sans-serif;
+    min-height: 100vh;
+    overflow-x: clip;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  user-select: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  --accentColor: #c2a4ff;
-  --backgroundColor: #09070d;
-  --vh: 100vh;
-  --vh: 100svh;
+.hero-heading {
+  background: linear-gradient(180deg, #646973 0%, #BBCCD7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: "Geist", sans-serif;
+
+/* Full-bleed video frame container for Projects Section */
+.project-video-frame-container {
+  container-type: size;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: inherit;
 }
-html,
-body {
-  overflow-x: hidden;
-  max-width: 100vw;
+
+.project-video-frame {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: inherit;
 }
-body {
-  overflow-y: hidden;
+
+/* Cover iframe positioning & sizing for hover preview */
+.project-preview-iframe-horizontal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: max(100%, calc(100cqh * 16 / 9));
+  height: max(100%, calc(100cqw * 9 / 16));
+  pointer-events: none;
+  border: 0;
 }
-a {
-  color: inherit;
-  text-decoration: inherit;
+
+.project-preview-iframe-vertical {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: max(100%, calc(100cqh * 16 / 9));
+  height: max(100%, calc(100cqw * 16 / 9));
+  pointer-events: none;
+  border: 0;
 }
-a:hover {
-  color: var(--accentColor);
+
+/* Secondary CTA: Resume Button with restrained outline & dark aesthetic */
+.resume-button {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.07) 0%, rgba(255, 255, 255, 0.02) 100%), #141416;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.4), inset 0px 1px 0px rgba(255, 255, 255, 0.1);
+  outline: 1.5px solid rgba(215, 226, 234, 0.3);
+  outline-offset: -3px;
+  transition: all 0.25s cubic-bezier(0.25, 0.1, 0.25, 1);
 }
-main {
-  opacity: 1;
-  transition: 0.3s;
+
+.resume-button:hover {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.04) 100%), #1c1c20;
+  outline-color: rgba(255, 255, 255, 0.75);
+  box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.5), inset 0px 1px 0px rgba(255, 255, 255, 0.2), 0 0 16px rgba(215, 226, 234, 0.18);
+  color: #FFFFFF;
 }
-.main-active {
-  opacity: 0;
-  animation: fadeIn 1s 1;
-  animation-fill-mode: forwards;
+
+.resume-button:focus-visible {
+  outline: 2px solid #D7E2EA;
+  outline-offset: 2px;
 }
-@keyframes fadeIn {
+
+/* Subtle continuous floating animation for mobile and tablet touch devices */
+@keyframes heroCharacterFloat {
+  0% {
+    transform: translate3d(0px, -5px, 0px) rotate(-0.75deg);
+  }
+  50% {
+    transform: translate3d(0px, 5px, 0px) rotate(0.75deg);
+  }
+  100% {
+    transform: translate3d(0px, -5px, 0px) rotate(-0.75deg);
+  }
+}
+
+.hero-character-float {
+  animation: heroCharacterFloat 3.6s ease-in-out infinite;
+}
+
+/* Decorative About Me 3D objects floating animations with varied organic rhythms */
+@keyframes aboutFloat1 {
+  0%, 100% {
+    transform: translate3d(0px, -4px, 0px) rotate(-1deg);
+  }
+  50% {
+    transform: translate3d(0px, 4px, 0px) rotate(1deg);
+  }
+}
+
+@keyframes aboutFloat2 {
+  0%, 100% {
+    transform: translate3d(0px, 5px, 0px) rotate(1.2deg);
+  }
+  50% {
+    transform: translate3d(0px, -5px, 0px) rotate(-0.8deg);
+  }
+}
+
+@keyframes aboutFloat3 {
+  0%, 100% {
+    transform: translate3d(0px, -5px, 0px) rotate(0.8deg);
+  }
+  50% {
+    transform: translate3d(0px, 4px, 0px) rotate(-1deg);
+  }
+}
+
+@keyframes aboutFloat4 {
+  0%, 100% {
+    transform: translate3d(0px, 4px, 0px) rotate(-1deg);
+  }
+  50% {
+    transform: translate3d(0px, -4px, 0px) rotate(0.9deg);
+  }
+}
+
+.about-float-1 {
+  animation: aboutFloat1 3.8s ease-in-out infinite;
+}
+
+.about-float-2 {
+  animation: aboutFloat2 4.4s ease-in-out infinite 0.5s;
+}
+
+.about-float-3 {
+  animation: aboutFloat3 3.5s ease-in-out infinite 1.1s;
+}
+
+.about-float-4 {
+  animation: aboutFloat4 4.1s ease-in-out infinite 1.6s;
+}
+
+/* Subtle blinking caret for hero typewriter animation */
+@keyframes caretBlink {
+  0%, 45% {
+    opacity: 1;
+  }
+  50%, 95% {
+    opacity: 0;
+  }
   100% {
     opacity: 1;
   }
 }
-body {
-  margin: 0;
-  height: auto;
-  background-color: #000;
-  flex-grow: 1;
-  --cWidth: calc(100% - 30px);
-  --cMaxWidth: 1920px;
-  max-width: 100vw;
-  overflow-x: hidden;
-}
-.main-body {
-  max-width: 100vw;
-  overflow-x: hidden;
+
+.animate-caret-blink {
+  animation: caretBlink 0.85s infinite;
 }
 
-.container-main {
-  width: 100%;
-  margin: auto;
-  position: relative;
-}
-.container1 {
-  width: var(--cWidth);
-  height: var(--vh);
-  margin: auto;
-  position: relative;
-}
-.split-line {
-  overflow: hidden;
-}
-.split-h2 {
-  overflow: hidden;
-  display: flex;
-  white-space: nowrap;
-  flex-wrap: nowrap;
-}
-
-.techstack {
-  width: 100%;
-  position: relative;
-  height: var(--vh);
-  margin: auto;
-  margin-top: 80px;
-  margin-bottom: 0px;
-  z-index: 1;
-  background-color: var(--backgroundColor);
-  overflow: hidden;
-}
-
-.techstack h2 {
-  font-size: 80px;
-  text-align: center;
-  position: absolute;
-  width: 100%;
-  top: 120px;
-  left: 0;
-  font-weight: 400;
-  text-transform: uppercase;
-}
-
-@media screen and (min-width: 768px) {
-  body {
-    --cWidth: 94%;
+@media (hover: hover) and (pointer: fine) {
+  .hero-character-float,
+  .about-float-1,
+  .about-float-2,
+  .about-float-3,
+  .about-float-4 {
+    animation: none !important;
   }
 }
-@media screen and (max-width: 900px) {
-  .techstack h2 {
-    font-size: 40px;
-  }
-}
+

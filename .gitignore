@@ -22,10 +22,3 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
-.npmrc
-
-backup/
-.env
-video for portfolio/
-chrome_dir/
-render_test.py
